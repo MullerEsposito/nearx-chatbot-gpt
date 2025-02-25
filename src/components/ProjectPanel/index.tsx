@@ -1,4 +1,5 @@
 import { Interaction } from "../../@types";
+import { TypingText } from "../TypingText";
 import { GeminiMessage, InteractionBox, PanelContainer, PrompterMessage } from "./style";
 
 interface ProjectPanelProps {
@@ -8,32 +9,18 @@ interface ProjectPanelProps {
 export const ProjectPanel: React.FC<ProjectPanelProps> = ({ interactions }) => {
   return (
     <PanelContainer>
-      {/* {interactions.map((interaction, index) => (
-        <Message key={index}>
+      {interactions.map((interaction, index) => (
+        <InteractionBox key={index}>
           <PrompterMessage>
             <strong>Você:</strong> {interaction.prompt}
           </PrompterMessage>
           <GeminiMessage>
-            <strong>Gemini:</strong> {interaction.response}
+            <strong>Gemini: </strong> 
+            <TypingText text={interaction.response} speed={100} />
           </GeminiMessage>
-        </Message>
-      ))} */}
-      <InteractionBox key={`mock`}>
-        <PrompterMessage>
-          <strong>Você:</strong> Olá? (mock)
-        </PrompterMessage>
-        <GeminiMessage>
-          <strong>Gemini:</strong> Olá! Sobre o que quer falar? (mock)
-        </GeminiMessage>
-      </InteractionBox>
-      <InteractionBox key={`mock`}>
-        <PrompterMessage>
-          <strong>Você:</strong> Tudo certo! Como está o clima hoje? (mock)
-        </PrompterMessage>
-        <GeminiMessage>
-          <strong>Gemini:</strong> Como não tenho acesso à informação em tempo real, incluindo o clima, não consigo te dizer como está o clima hoje. Para saber disso, você precisará consultar um site de previsão do tempo ou um aplicativo meteorológico, indicando sua localização. (mock)
-        </GeminiMessage>
-      </InteractionBox>
+        </InteractionBox>
+      ))}
+      
     </PanelContainer>
   );
 };

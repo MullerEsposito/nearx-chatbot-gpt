@@ -34,4 +34,34 @@ export const GeminiMessage = styled(Message)`
   background-color: hsla(242, 23.40%, 53.90%, 0.50);
   align-self: flex-end;
   border-top-right-radius: 50px;
+
+  pre {
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+
+  code {
+    background-color: #1e1e1e;
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #333;
+    color: white;
+  }
 `;
