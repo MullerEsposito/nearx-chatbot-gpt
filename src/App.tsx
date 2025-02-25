@@ -6,18 +6,17 @@ import { AppContainer, MainContent } from './style';
 import { PromptInput } from './components/InputPrompt';
 import { sendPrompt } from './services/gemini';
 import { GeminiResponse } from './services/types';
+import { Interaction } from './@types';
 
 const App: React.FC = () => {
-  const [response, setResponse] = React.useState('');
+  const [interactions, setInteractions] = React.useState<Interaction[]>([]);
 
   const handlePromptSubmit = async (prompt: string) => {
     const data: GeminiResponse | null = await sendPrompt(prompt);
     if (data && data.candidates.length > 0) {
-      const fullResponse = data.candidates[0].content.parts[0].text;
+      const fetchedResponse = data.candidates[0].content.parts[0].text;
       
-      setResponse(fullResponse);
-    } else {
-      setResponse("Nenhuma resposta recebida.");
+      setInteractions([...interactions, { prompt, response: fetchedResponse }]);
     }
   };
 
@@ -26,7 +25,7 @@ const App: React.FC = () => {
       <Sidebar />
       <MainContent>
         <Header />
-        <ProjectPanel message={response} />
+        <ProjectPanel interactions={interactions} />
         <PromptInput onSubmit={handlePromptSubmit} />
       </MainContent>
     </AppContainer>
