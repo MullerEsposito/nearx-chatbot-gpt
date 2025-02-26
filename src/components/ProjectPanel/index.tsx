@@ -16,7 +16,7 @@ export const ProjectPanel: React.FC<ProjectPanelProps> = ({ interactions }) => {
           </PrompterMessage>
           <GeminiMessage>
             <strong>Gemini: </strong> 
-            <TypingText text={interaction.response} speed={100} />
+            <TypingText text={interaction.response} speed={10} />
           </GeminiMessage>
         </InteractionBox>
       ))}

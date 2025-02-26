@@ -7,6 +7,8 @@ export const PanelContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-width: none;
 `;
 
 export const InteractionBox = styled.div`
